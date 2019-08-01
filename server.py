@@ -46,9 +46,9 @@ new Chart(document.getElementById("line-chart"), {
 
 @route('/')
 def index():
-    with open ("speed.txt", "r") as f:
+    with open ("/home/pi/speedtest/speed.txt", "r") as f:
         speeds = f.readlines()
     data = [json.loads(x) for x in speeds]
     return str_template.format(json.dumps(data)) + second
 
-run(host='localhost', port=80, debug=True)
+run(host='0.0.0.0', port=80, debug=True)

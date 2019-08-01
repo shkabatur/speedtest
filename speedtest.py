@@ -2,7 +2,7 @@ from subprocess import check_output
 import json
 from pprint import pprint
 
-output = check_output("iperf3 -c 178.34.154.130 -J")
+output = check_output("iperf3 -c 178.34.154.130 -J",shell=True)
 
 data = json.loads(output)
 
