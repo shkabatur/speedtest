@@ -1,9 +1,6 @@
 import json
 from bottle import route, run, template
 
-with open ("speed.txt", "r") as f:
-    speeds = f.readlines()
-data = [json.loads(x) for x in speeds]
 
 str_template = """
 <!doctype html>
@@ -49,6 +46,9 @@ new Chart(document.getElementById("line-chart"), {
 
 @route('/')
 def index():
+    with open ("speed.txt", "r") as f:
+        speeds = f.readlines()
+    data = [json.loads(x) for x in speeds]
     return str_template.format(json.dumps(data)) + second
 
 run(host='localhost', port=80, debug=True)
